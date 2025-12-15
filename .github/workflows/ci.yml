@@ -8,6 +8,8 @@ on:
 jobs:
   test-build:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.ACTIONS_VERCEL_KEY }}
 
     steps:
       - name: checkout code
@@ -28,7 +30,7 @@ jobs:
         run: npm run build
 
       - name: install vercel and deploy to PREVIEW
-        if: ${{ secrets.ACTIONS_VERCEL_KEY != '' }}
+        if: env.VERCEL_TOKEN != ''
         run: |
           npm install -g vercel
           vercel --yes --token ${{ secrets.ACTIONS_VERCEL_KEY }}
