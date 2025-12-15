@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test-build:
+  test-build-preview:
     runs-on: ubuntu-latest
     env:
       VERCEL_TOKEN: ${{ secrets.ACTIONS_VERCEL_TOKEN }}
